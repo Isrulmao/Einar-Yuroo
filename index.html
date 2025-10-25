@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yuroo Payment Portal</title>
+  <style>
+    body {
+      background: radial-gradient(circle at top, #001f0f, #000);
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 420px;
+      margin: 40px auto;
+      background: rgba(0, 40, 20, 0.75);
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(0,255,150,0.3);
+    }
+    img.logo {
+      width: 120px;
+      border-radius: 50%;
+      margin-bottom: 15px;
+      box-shadow: 0 0 15px #00ff99;
+    }
+    h1 {
+      color: #00ff99;
+      margin-bottom: 25px;
+    }
+    button {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      background: linear-gradient(90deg, #00ff99, #00ccff);
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      color: #000;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+    button:hover {
+      transform: scale(1.05);
+    }
+    .info-box {
+      background: rgba(0, 50, 25, 0.7);
+      margin-top: 10px;
+      padding: 12px;
+      border-radius: 12px;
+      font-size: 15px;
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+    .info-box img {
+      width: 70px;
+      border-radius: 10px;
+      margin-bottom: 8px;
+    }
+    .qr-container img {
+      width: 220px;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    .qr-container img:hover {
+      transform: scale(1.05);
+    }
+    .admin-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 15px;
+    }
+    .admin-buttons button {
+      width: 48%;
+      background: linear-gradient(90deg, #25D366, #00bfa5);
+    }
+    .admin-buttons button.telegram {
+      background: linear-gradient(90deg, #0088cc, #00bfff);
+    }
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(-5px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    .footer {
+      margin-top: 25px;
+      color: #cfcfcf;
+      font-size: 14px;
+    }
+    .highlight {
+      color: #00ffcc;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="https://files.catbox.moe/q1r9md.jpg" class="logo" alt="Yuroo Logo">
+    <h1>Yuroo Payment Portal</h1>
+
+    <!-- Tombol DANA -->
+    <button onclick="toggleInfo('dana')">Dana</button>
+    <div id="info-dana" class="info-box">
+      <img src="https://files.catbox.moe/4y4duk.jpg" alt="Dana Logo"><br>
+      <b>No:</b> 088226440661 
+      <button onclick="copyText('088226440661')">Copy</button><br>
+      <b>A/N:</b> Wahyu Sa******
+    </div>
+
+    <!-- Tombol GOPAY -->
+    <button onclick="toggleInfo('gopay')">Gopay</button>
+    <div id="info-gopay" class="info-box">
+      <img src="https://files.catbox.moe/9mtros.jpg" alt="Gopay Logo"><br>
+      <b>No:</b> 088226440661 
+      <button onclick="copyText('088226440661')">Copy</button><br>
+      <b>A/N:</b> Zee
+    </div>
+
+    <!-- Tombol QRIS -->
+    <button onclick="toggleInfo('qris')">QRIS</button>
+    <div id="info-qris" class="info-box qr-container">
+      <img src="https://files.catbox.moe/x0u40w.jpg" alt="QRIS" onclick="openFullscreen(this)">
+    </div>
+
+    <div class="admin-buttons">
+      <button onclick="window.open('https://wa.me/+6288226440661','_blank')">💬 WhatsApp</button>
+      <button class="telegram" onclick="window.open('https://t.me/YurooXsigma','_blank')">📨 Telegram</button>
+    </div>
+
+    <hr style="margin: 25px 0; border-color:#00ff99;">
+
+    <h2>Yuroo Public Marketplace</h2>
+    <button onclick="window.open('https://chat.whatsapp.com/DhbfSjrBS5P4kvfnvZyjwB?mode=ems_copy_t','_blank')">WA Group</button>
+
+    <div class="footer">✨ Thank You for Trusting <span class="highlight">Yuroo</span> ✨</div>
+  </div>
+
+  <script>
+    function toggleInfo(id) {
+      const box = document.getElementById('info-' + id);
+      const all = document.querySelectorAll('.info-box');
+      all.forEach(el => {
+        if (el !== box) el.style.display = 'none';
+      });
+      box.style.display = (box.style.display === 'block') ? 'none' : 'block';
+    }
+
+    function copyText(text) {
+      navigator.clipboard.writeText(text);
+      alert('Nomor berhasil disalin: ' + text);
+    }
+
+    function openFullscreen(img) {
+      const newTab = window.open('', '_blank');
+      newTab.document.write('<img src="' + img.src + '" style="width:100%;height:auto;">');
+    }
+  </script>
+</body>
+</html>
