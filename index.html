@@ -1,164 +1,299 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Yuroo Payment Portal</title>
-  <style>
-    body {
-      background: radial-gradient(circle at top, #001f0f, #000);
-      font-family: 'Poppins', sans-serif;
-      color: #fff;
-      text-align: center;
-      margin: 0;
-      padding: 0;
-    }
-    .container {
-      max-width: 420px;
-      margin: 40px auto;
-      background: rgba(0, 40, 20, 0.75);
-      padding: 25px;
-      border-radius: 20px;
-      box-shadow: 0 0 30px rgba(0,255,150,0.3);
-    }
-    img.logo {
-      width: 120px;
-      border-radius: 50%;
-      margin-bottom: 15px;
-      box-shadow: 0 0 15px #00ff99;
-    }
-    h1 {
-      color: #00ff99;
-      margin-bottom: 25px;
-    }
-    button {
-      display: block;
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      background: linear-gradient(90deg, #00ff99, #00ccff);
-      border: none;
-      border-radius: 10px;
-      font-size: 16px;
-      color: #000;
-      cursor: pointer;
-      font-weight: 600;
-      transition: 0.2s;
-    }
-    button:hover {
-      transform: scale(1.05);
-    }
-    .info-box {
-      background: rgba(0, 50, 25, 0.7);
-      margin-top: 10px;
-      padding: 12px;
-      border-radius: 12px;
-      font-size: 15px;
-      display: none;
-      animation: fadeIn 0.3s ease;
-    }
-    .info-box img {
-      width: 70px;
-      border-radius: 10px;
-      margin-bottom: 8px;
-    }
-    .qr-container img {
-      width: 220px;
-      border-radius: 15px;
-      cursor: pointer;
-      transition: transform 0.2s ease;
-    }
-    .qr-container img:hover {
-      transform: scale(1.05);
-    }
-    .admin-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 15px;
-    }
-    .admin-buttons button {
-      width: 48%;
-      background: linear-gradient(90deg, #25D366, #00bfa5);
-    }
-    .admin-buttons button.telegram {
-      background: linear-gradient(90deg, #0088cc, #00bfff);
-    }
-    @keyframes fadeIn {
-      from {opacity: 0; transform: translateY(-5px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
-    .footer {
-      margin-top: 25px;
-      color: #cfcfcf;
-      font-size: 14px;
-    }
-    .highlight {
-      color: #00ffcc;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Einar Yuroo | Official Page</title>
+<style>
+:root {
+  --accent: #00ffcc;
+  --text-light: #eafff9;
+  --btn-glow: 0 0 20px rgba(0, 255, 180, 0.45);
+}
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to bottom, #1f5a44 0%, #15382c 40%, #0c1f18 100%);
+  color: var(--text-light);
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+  transition: 0.5s ease;
+  animation: fadeIn 1s ease;
+}
+
+/* Tambahan fix biar gak ada kelebihan kanan */
+* {
+  box-sizing: border-box;
+  max-width: 100vw;
+  overflow-x: clip;
+}
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+.header {
+  width: 100%;
+  text-align: center;
+  background: linear-gradient(to bottom, rgba(31,90,68,0.85), rgba(10,30,20,0.95));
+  padding: 45px 20px 45px; /* atas & bawah seimbang */
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* ini yang bikin logo pas tengah */
+}
+.header::before {
+  content: "";
+  background: url("https://files.catbox.moe/q1r9md.jpg") center/cover no-repeat;
+  position: absolute;
+  inset: 0;
+  opacity: 0.25;
+  filter: blur(6px) brightness(0.9);
+  transform: scale(1.1);
+}
+.header img {
+  position: relative;
+  width: 130px;
+  height: 130px;
+  border-radius: 20px;
+  border: 3px solid rgba(0, 255, 180, 0.6);
+  box-shadow: 0 0 25px rgba(0,255,180,0.5);
+}
+.header h1 {
+  position: relative;
+  font-size: 2rem;
+  margin-top: 10px;
+  text-shadow: 0 0 15px rgba(0,255,180,0.5);
+}
+.clock {
+  position: relative;
+  font-size: 0.9rem;
+  opacity: 0.85;
+  margin-top: 5px;
+}
+.container {
+  max-width: 500px;
+  margin: 40px auto;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 18px;
+  box-shadow: 0 0 25px rgba(0,255,180,0.15);
+  backdrop-filter: blur(12px);
+  text-align: center;
+  padding: 35px 25px;
+}
+.typing {
+  display: inline-block;
+  border-right: 3px solid var(--accent);
+  white-space: nowrap;
+  overflow: hidden;
+  animation: typing 3.5s steps(30, end), blink .7s infinite;
+  font-size: 1.3rem;
+  color: var(--accent);
+}
+@keyframes typing { from { width: 0 } to { width: 100% } }
+@keyframes blink { 50% { border-color: transparent } }
+p.intro {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 12px 15px;
+  font-size: 15px;
+  line-height: 1.8;
+  margin-top: 15px;
+  text-align: justify;
+}
+button {
+  width: 100%;
+  margin: 10px 0;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #00cc88, #00e6b8);
+  color: #001f16;
+  font-weight: 600;
+  font-size: 16px;
+  box-shadow: var(--btn-glow);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(0,255,200,0.45);
+}
+.popup {
+  display: none;
+  background: rgba(0,50,40,0.85);
+  padding: 15px;
+  border-radius: 14px;
+  margin-top: 10px;
+}
+.popup img {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 10px;
+  margin-top: 8px;
+  cursor: pointer;
+  transition: transform .3s;
+}
+.popup img.logo-small {
+  width: 100px !important;
+  max-width: 120px !important;
+  height: auto;
+  margin: 10px auto;
+  display: block;
+}
+#sub-qris img {
+  width: 100%;
+  max-width: 380px;
+}
+.popup img:hover { transform: scale(1.04); }
+.divider {
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, transparent, #00ffc8, transparent);
+  margin: 25px 0;
+}
+ul { list-style: none; padding: 0; text-align: left; }
+ul li::before { content: "▹ "; color: var(--accent); }
+footer {
+  text-align: center;
+  color: #bfefff;
+  font-size: 13px;
+  margin-top: 40px;
+  padding-bottom: 20px;
+}
+.music-player {
+  position: fixed;
+  bottom: 15px;
+  right: 20px;
+  background: rgba(0,40,30,0.65);
+  border-radius: 30px;
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 0 20px rgba(0,255,200,0.3);
+}
+.music-player button {
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-size: 20px;
+  cursor: pointer;
+}
+.music-player audio { width: 180px; }
+</style>
 </head>
 <body>
-  <div class="container">
-    <img src="https://files.catbox.moe/q1r9md.jpg" class="logo" alt="Yuroo Logo">
-    <h1>Yuroo Payment Portal</h1>
 
-    <!-- Tombol DANA -->
-    <button onclick="toggleInfo('dana')">Dana</button>
-    <div id="info-dana" class="info-box">
-      <img src="https://files.catbox.moe/4y4duk.jpg" alt="Dana Logo"><br>
-      <b>No:</b> 088226440661 
-      <button onclick="copyText('088226440661')">Copy</button><br>
-      <b>A/N:</b> Wahyu Sa******
-    </div>
+<div class="header">
+  <img src="https://files.catbox.moe/q1r9md.jpg" alt="Logo">
+  <h1>Einar Yuroo</h1>
+  <div class="clock" id="clock">00:00</div>
+</div>
 
-    <!-- Tombol GOPAY -->
-    <button onclick="toggleInfo('gopay')">Gopay</button>
-    <div id="info-gopay" class="info-box">
-      <img src="https://files.catbox.moe/9mtros.jpg" alt="Gopay Logo"><br>
-      <b>No:</b> 088226440661 
-      <button onclick="copyText('088226440661')">Copy</button><br>
-      <b>A/N:</b> Zee
-    </div>
+<div class="container">
+  <h2><span class="typing">Haloo semuaa, aku Einar Yuroo!</span></h2>
+  <p class="intro">Aku menyediakan layanan jual beli akun game atau sosial media, serta berbagai jasa tambahan yang bisa membantu kebutuhanmu. Yuk lihat layanan yang tersedia di bawah 👇</p>
 
-    <!-- Tombol QRIS -->
-    <button onclick="toggleInfo('qris')">QRIS</button>
-    <div id="info-qris" class="info-box qr-container">
-      <img src="https://files.catbox.moe/x0u40w.jpg" alt="QRIS" onclick="openFullscreen(this)">
-    </div>
-
-    <div class="admin-buttons">
-      <button onclick="window.open('https://wa.me/+6288226440661','_blank')">💬 WhatsApp</button>
-      <button class="telegram" onclick="window.open('https://t.me/YurooXsigma','_blank')">📨 Telegram</button>
-    </div>
-
-    <hr style="margin: 25px 0; border-color:#00ff99;">
-
-    <h2>Yuroo Public Marketplace</h2>
-    <button onclick="window.open('https://chat.whatsapp.com/DhbfSjrBS5P4kvfnvZyjwB?mode=ems_copy_t','_blank')">WA Group</button>
-
-    <div class="footer">✨ Thank You for Trusting <span class="highlight">Yuroo</span> ✨</div>
+  <button onclick="togglePopup('rekber')">Fee Rekber EinarYuroo 💸</button>
+  <div id="popup-rekber" class="popup">
+    <img src="https://files.catbox.moe/rpey8o.jpg" alt="Fee Rekber" onclick="openImage(this)">
   </div>
 
-  <script>
-    function toggleInfo(id) {
-      const box = document.getElementById('info-' + id);
-      const all = document.querySelectorAll('.info-box');
-      all.forEach(el => {
-        if (el !== box) el.style.display = 'none';
-      });
-      box.style.display = (box.style.display === 'block') ? 'none' : 'block';
-    }
+  <button onclick="togglePopup('payment')">Yuroo’s Payment 💳</button>
+  <div id="popup-payment" class="popup">
+    <button onclick="toggleSub('dana')">DANA</button>
+    <div id="sub-dana" class="popup">
+      <img class="logo-small" src="https://files.catbox.moe/4y4duk.jpg" alt="Dana" onclick="openImage(this)">
+      <b>No :</b> 088226440661 <button onclick="copyText('088226440661')">Copy</button><br>
+      <b>A/N :</b> Wahyu Sa****ah
+    </div>
+    <button onclick="toggleSub('gopay')">GOPAY</button>
+    <div id="sub-gopay" class="popup">
+      <img class="logo-small" src="https://files.catbox.moe/9mtros.jpg" alt="Gopay" onclick="openImage(this)">
+      <b>No :</b> 088226440661 <button onclick="copyText('088226440661')">Copy</button><br>
+      <b>A/N :</b> Zee
+    </div>
+    <button onclick="toggleSub('qris')">QRIS All Payment</button>
+    <div id="sub-qris" class="popup">
+      <img src="https://files.catbox.moe/yr6otw.jpg" alt="QRIS" onclick="openImage(this)">
+      <button onclick="downloadImage('https://files.catbox.moe/yr6otw.jpg')">Perbesar Qris</button>
+    </div>
+  </div>
 
-    function copyText(text) {
-      navigator.clipboard.writeText(text);
-      alert('Nomor berhasil disalin: ' + text);
-    }
+  <button onclick="togglePopup('contact')">No WhatsApp✉️</button>
+  <div id="popup-contact" class="popup">
+    <button onclick="window.open('https://wa.me/+6288226440661','_blank')">WhatsApp</button>
+    <button onclick="window.open('https://t.me/EinarYuroo','_blank')">Telegram</button>
+  </div>
 
-    function openFullscreen(img) {
-      const newTab = window.open('', '_blank');
-      newTab.document.write('<img src="' + img.src + '" style="width:100%;height:auto;">');
-    }
-  </script>
+  <div class="divider"></div>
+
+  <button onclick="window.open('https://chat.whatsapp.com/DhbfSjrBS5P4kvfnvZyjwB','_blank')">Yuroo Public Marketplace ☘️</button>
+  <button onclick="window.open('https://whatsapp.com/channel/0029Vb6bra3AjPXWF86Y0Q0t','_blank')">Testimonial & Stock Channel ⭐</button>
+
+  <div class="divider"></div>
+
+  <button onclick="window.open('https://www.tiktok.com/@einaryuroo0?_t=ZS-90qWPpdywZr&_r=1','_blank')">TikTok 🎵</button>
+  <button onclick="window.open('https://www.instagram.com/yuroo.store?igsh=MXhxcnE3NTMxOTZ0ZA==','_blank')">Instagram 📸</button>
+
+  <div class="divider"></div>
+
+  <ul>
+    <li>Jasa pembuatan Web simple</li>
+    <li>Jasa pembuatan Bot WhatsApp simple</li>
+    <li>Jasa tambah, benerin, atau hapus fitur Bot WhatsApp</li>
+    <li>Sewa Bot</li>
+  </ul>
+</div>
+
+<footer>© 2025 Einar Yuroo — All Rights Reserved</footer>
+
+<div class="music-player">
+  <button id="playPause">⏸️</button>
+  <audio id="music" autoplay loop></audio>
+</div>
+
+<script>
+function togglePopup(id) {
+  const el = document.getElementById("popup-" + id);
+  const all = document.querySelectorAll(".popup");
+  all.forEach(p => { if (p !== el && !p.id.startsWith("sub-")) p.style.display = "none"; });
+  el.style.display = el.style.display === "block" ? "none" : "block";
+}
+function toggleSub(id) {
+  const sub = document.getElementById("sub-" + id);
+  const subs = document.querySelectorAll("[id^='sub-']");
+  subs.forEach(s => { if (s !== sub) s.style.display = "none"; });
+  sub.style.display = sub.style.display === "block" ? "none" : "block";
+}
+function copyText(t){navigator.clipboard.writeText(t);alert("Nomor berhasil disalin: "+t);}
+function openImage(img){const w=window.open("","_blank");w.document.write(`<img src="${img.src}" style="width:100%;height:auto;">`);}
+function downloadImage(u){const a=document.createElement("a");a.href=u;a.download="QRIS-Yuroo.jpg";a.click();}
+function updateClock(){
+  const now=new Date();
+  const d=["Minggu","Senin","Selasa","Rabu","Kamis","Jumat","Sabtu"][now.getDay()];
+  const m=["Jan","Feb","Mar","Apr","Mei","Jun","Jul","Agu","Sep","Okt","Nov","Des"][now.getMonth()];
+  document.getElementById("clock").innerText=`${d}, ${now.getDate()} ${m} ${now.getFullYear()} | ${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}`;
+}
+setInterval(updateClock,1000);updateClock();
+
+const musicList=[
+ "https://files.catbox.moe/n4bgcp.mp3",
+ "https://files.catbox.moe/jnf8ji.mp3",
+ "https://files.catbox.moe/ji3ziw.mp3"
+];
+const music=document.getElementById("music");
+music.src=musicList[Math.floor(Math.random()*musicList.length)];
+music.volume=0;music.play();
+let vol=0;
+const fadeIn=setInterval(()=>{if(vol<0.3){vol+=0.01;music.volume=vol;}else clearInterval(fadeIn);},200);
+const playBtn=document.getElementById("playPause");
+playBtn.onclick=()=>{
+ if(music.paused){music.play();playBtn.textContent="⏸️";}
+ else{music.pause();playBtn.textContent="▶️";}
+};
+</script>
 </body>
 </html>
