@@ -1,244 +1,215 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Einar Yuroo | Official Page</title>
+<meta name="theme-color" content="#0f2d24" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 <style>
-:root {
-  --accent: #00ffcc;
-  --text-light: #eafff9;
-  --btn-glow: 0 0 20px rgba(0, 255, 180, 0.45);
+:root{
+  --bg-1:#0e201a; --bg-2:#133127; --bg-3:#1a4336;
+  --accent:#00ffcc; --accent-2:#72ffd9; --text:#eafff9;
+  --ring: 0 0 0 3px rgba(0,255,204,.22);
+  --radius:20px;
+  --shadow: 0 10px 30px rgba(0,0,0,.35), 0 0 40px rgba(0,255,205,.12);
 }
-body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(to bottom, #1f5a44 0%, #15382c 40%, #0c1f18 100%);
-  color: var(--text-light);
-  overflow-x: hidden;
-  width: 100%;
-  position: relative;
-  transition: 0.5s ease;
-  animation: fadeIn 1s ease;
+*{box-sizing:border-box} html,body{height:100%} html{scroll-behavior:smooth}
+body{
+  margin:0; font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Arial;
+  background:
+    radial-gradient(1200px 800px at 10% -10%, var(--bg-3), transparent),
+    radial-gradient(900px 600px at 110% 10%, #0b1a15, transparent),
+    linear-gradient(180deg, var(--bg-1), var(--bg-2));
+  color:var(--text); overflow-x:hidden;
+  -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+  animation: pageFade .7s ease both;
+}
+@keyframes pageFade { from{opacity:0; transform:translateY(10px)} to{opacity:1; transform:none} }
+
+/* dekorasi */
+.blob{ position:fixed; inset:auto auto -140px -140px; width:300px; height:300px; border-radius:50%;
+  background: radial-gradient(circle at 30% 30%, var(--accent), transparent 60%);
+  filter: blur(60px) opacity(.18); animation: float1 14s ease-in-out infinite; pointer-events:none; z-index:0;
+}
+.blob.b2{left:auto; right:-150px; bottom:-120px; animation: float2 16s ease-in-out infinite; background: radial-gradient(circle at 70% 70%, var(--accent-2), transparent 60%);}
+@keyframes float1 {0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(40px,-20px) scale(1.1)}}
+@keyframes float2 {0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-40px,10px) scale(1.05)}}
+
+/* header */
+.header{
+  position:relative; z-index:1; display:flex; flex-direction:column; align-items:center; justify-content:center;
+  padding:56px 22px 48px; background: linear-gradient(to bottom, rgba(26,67,54,.65), rgba(10,28,22,.92));
+  overflow:hidden;
+}
+.header::before{
+  content:""; position:absolute; inset:0;
+  background:url('https://files.catbox.moe/q1r9md.jpg') center/cover no-repeat;
+  opacity:.22; filter: blur(6px) saturate(1.1); transform: scale(1.08);
+}
+.header::after{ content:""; position:absolute; inset:0; background: radial-gradient(650px 200px at 50% 0%, rgba(0,0,0,.45), transparent); }
+.brand{ position:relative; display:grid; place-items:center; gap:12px; }
+.brand img{
+  width:128px; height:128px; border-radius:24px; border:2px solid rgba(0,255,190,.55);
+  box-shadow: 0 0 30px rgba(0,255,190,.35); transition: transform .35s ease, box-shadow .35s ease;
+}
+.brand img:hover{ transform: translateY(-3px) scale(1.02); box-shadow: 0 10px 40px rgba(0,255,190,.45) }
+.header h1{ margin:10px 0 2px; font-size:clamp(1.6rem, 1.1rem + 2vw, 2.4rem); letter-spacing:.4px; text-shadow:0 0 18px rgba(0,255,180,.35); }
+.clock{
+  font-size:.95rem; opacity:.9; padding:4px 10px; border-radius:999px;
+  background: rgba(255,255,255,.06); backdrop-filter: blur(6px); border:1px solid rgba(255,255,255,.08);
 }
 
-/* Tambahan fix biar gak ada kelebihan kanan */
-* {
-  box-sizing: border-box;
-  max-width: 100vw;
-  overflow-x: clip;
+/* konten */
+.container{
+  position:relative; z-index:1; max-width:640px; margin:38px auto; padding:28px 22px;
+  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+  border:1px solid rgba(255,255,255,.10); border-radius: var(--radius);
+  box-shadow: var(--shadow); backdrop-filter: blur(12px);
+  transition: transform .35s ease, box-shadow .35s ease;
 }
-@keyframes fadeIn {
-  from {opacity: 0; transform: translateY(20px);}
-  to {opacity: 1; transform: translateY(0);}
-}
-.header {
-  width: 100%;
-  text-align: center;
-  background: linear-gradient(to bottom, rgba(31,90,68,0.85), rgba(10,30,20,0.95));
-  padding: 45px 20px 45px; /* atas & bawah seimbang */
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center; /* ini yang bikin logo pas tengah */
-}
-.header::before {
-  content: "";
-  background: url("https://files.catbox.moe/q1r9md.jpg") center/cover no-repeat;
-  position: absolute;
-  inset: 0;
-  opacity: 0.25;
-  filter: blur(6px) brightness(0.9);
-  transform: scale(1.1);
-}
-.header img {
-  position: relative;
-  width: 130px;
-  height: 130px;
-  border-radius: 20px;
-  border: 3px solid rgba(0, 255, 180, 0.6);
-  box-shadow: 0 0 25px rgba(0,255,180,0.5);
-}
-.header h1 {
-  position: relative;
-  font-size: 2rem;
-  margin-top: 10px;
-  text-shadow: 0 0 15px rgba(0,255,180,0.5);
-}
-.clock {
-  position: relative;
-  font-size: 0.9rem;
-  opacity: 0.85;
-  margin-top: 5px;
-}
-.container {
-  max-width: 500px;
-  margin: 40px auto;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 18px;
-  box-shadow: 0 0 25px rgba(0,255,180,0.15);
-  backdrop-filter: blur(12px);
-  text-align: center;
-  padding: 35px 25px;
-}
-.typing {
-  display: inline-block;
-  border-right: 3px solid var(--accent);
-  white-space: nowrap;
-  overflow: hidden;
+.container:hover{ transform: translateY(-2px) }
+
+/* judul benar-benar center */
+.title{ display:flex; justify-content:center; margin:0; }
+.typing{
+  display:inline-block; border-right:3px solid var(--accent); white-space:nowrap; overflow:hidden;
   animation: typing 3.5s steps(30, end), blink .7s infinite;
-  font-size: 1.3rem;
-  color: var(--accent);
+  font-size: clamp(1.05rem, .9rem + .8vw, 1.4rem); color: var(--accent); text-align:center;
 }
-@keyframes typing { from { width: 0 } to { width: 100% } }
-@keyframes blink { 50% { border-color: transparent } }
-p.intro {
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 10px;
-  padding: 12px 15px;
-  font-size: 15px;
-  line-height: 1.8;
-  margin-top: 15px;
-  text-align: justify;
+@keyframes typing{ from{width:0} to{width:100%} }
+@keyframes blink{ 50%{ border-color: transparent } }
+
+p.intro{
+  background: rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.10); border-radius:14px;
+  padding:14px 16px; font-size:15.5px; line-height:1.8; text-align:justify; box-shadow: 0 10px 18px rgba(0,0,0,.12) inset;
 }
-button {
-  width: 100%;
-  margin: 10px 0;
-  padding: 12px;
-  border: none;
-  border-radius: 12px;
-  background: linear-gradient(90deg, #00cc88, #00e6b8);
-  color: #001f16;
-  font-weight: 600;
-  font-size: 16px;
-  box-shadow: var(--btn-glow);
-  cursor: pointer;
-  transition: all 0.25s ease;
+
+/* tombol */
+button{
+  width:100%; margin:10px 0; padding:13px 14px; border:none; border-radius:14px;
+  background: linear-gradient(90deg, #00cc88, #00e6b8); color:#002318; font-weight:650; font-size:16px; letter-spacing:.2px;
+  box-shadow: 0 8px 20px rgba(0,255,200,.24); cursor:pointer; position:relative; overflow:hidden;
+  transition: transform .18s ease, box-shadow .25s ease, filter .25s ease;
 }
-button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 25px rgba(0,255,200,0.45);
+button:hover{ transform: translateY(-1px); box-shadow: 0 12px 28px rgba(0,255,200,.35) }
+button:active{ transform: translateY(0) scale(.99) }
+button:focus-visible{ outline:none; box-shadow: var(--ring) }
+button::after{ content:""; position:absolute; inset:auto; width:0; height:0; border-radius:50%; background: rgba(255,255,255,.35); transform: translate(-50%,-50%); transition: width .45s ease, height .45s ease; pointer-events:none; }
+button.ripple-animate::after{ width:320px; height:320px; }
+
+/* popup */
+.popup{
+  display:block; max-height:0; opacity:0; overflow:hidden;
+  background: rgba(2,34,27,.72); border:1px solid rgba(255,255,255,.08); border-radius:14px;
+  margin-top:10px; padding:0 14px; transition: max-height .45s ease, opacity .35s ease, padding .35s ease, filter .35s ease;
+  filter: drop-shadow(0 8px 24px rgba(0,0,0,.25));
 }
-.popup {
-  display: none;
-  background: rgba(0,50,40,0.85);
-  padding: 15px;
-  border-radius: 14px;
-  margin-top: 10px;
+.popup.show{ max-height:520px; opacity:1; padding:14px; }
+.popup img{ width:100%; max-width:320px; border-radius:12px; margin:8px auto 0; display:block; cursor: zoom-in; transition: transform .3s ease, box-shadow .3s ease, filter .3s ease; box-shadow: 0 10px 22px rgba(0,0,0,.25); }
+.popup img:hover{ transform: translateY(-2px) scale(1.02); filter: saturate(1.05) }
+.popup img.logo-small{ width:100px !important; max-width:120px !important; height:auto; margin:10px auto }
+#sub-qris img{ width:100%; max-width:380px }
+
+/* lightbox untuk gambar (QRIS dsb) */
+#lightbox{
+  position:fixed; inset:0; background:rgba(0,0,0,.7); backdrop-filter: blur(4px);
+  display:none; align-items:center; justify-content:center; z-index:9998; padding:16px;
 }
-.popup img {
-  width: 100%;
-  max-width: 300px;
-  border-radius: 10px;
-  margin-top: 8px;
-  cursor: pointer;
-  transition: transform .3s;
+#lightbox.show{ display:flex; }
+#lightbox img{ max-width:min(92vw, 1024px); max-height:92vh; width:auto; height:auto; border-radius:14px; box-shadow:0 20px 60px rgba(0,0,0,.5) }
+
+/* divider & list */
+.divider{ width:100%; height:2px; background: linear-gradient(90deg, transparent, var(--accent), transparent); margin:26px 0; opacity:.8; }
+ul{ list-style:none; padding:0; margin:0; text-align:left }
+ul li{ padding:6px 0 6px 2px; border-bottom:1px dashed rgba(255,255,255,.08) }
+ul li:last-child{ border-bottom:none }
+ul li::before{ content:"▹ "; color:var(--accent); margin-right:4px }
+
+/* footer */
+footer{ text-align:center; color:#c7fff0; font-size:13px; margin:40px 0 70px; }
+
+/* tombol musik mengambang (FAB) */
+.music-fab{
+  position:fixed;
+  right:calc(18px + env(safe-area-inset-right));
+  bottom:calc(18px + env(safe-area-inset-bottom));
+  width:56px; height:56px; border-radius:50%;
+  background: radial-gradient(120% 120% at 30% 20%, #00e6b8, #00cc88);
+  display:grid; place-items:center;
+  color:#002318; font-size:22px; font-weight:800;
+  box-shadow: 0 10px 30px rgba(0,0,0,.25), 0 0 30px rgba(0,255,200,.35);
+  cursor:pointer; z-index:9999; user-select:none; transition: transform .18s ease, box-shadow .25s ease;
 }
-.popup img.logo-small {
-  width: 100px !important;
-  max-width: 120px !important;
-  height: auto;
-  margin: 10px auto;
-  display: block;
-}
-#sub-qris img {
-  width: 100%;
-  max-width: 380px;
-}
-.popup img:hover { transform: scale(1.04); }
-.divider {
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(to right, transparent, #00ffc8, transparent);
-  margin: 25px 0;
-}
-ul { list-style: none; padding: 0; text-align: left; }
-ul li::before { content: "▹ "; color: var(--accent); }
-footer {
-  text-align: center;
-  color: #bfefff;
-  font-size: 13px;
-  margin-top: 40px;
-  padding-bottom: 20px;
-}
-.music-player {
-  position: fixed;
-  bottom: 15px;
-  right: 20px;
-  background: rgba(0,40,30,0.65);
-  border-radius: 30px;
-  padding: 8px 14px;
-  display: flex;
-  align-items: center;
-  box-shadow: 0 0 20px rgba(0,255,200,0.3);
-}
-.music-player button {
-  background: none;
-  border: none;
-  color: var(--accent);
-  font-size: 20px;
-  cursor: pointer;
-}
-.music-player audio { width: 180px; }
+.music-fab:hover{ transform: translateY(-2px); }
+.music-fab:active{ transform: scale(.98); }
+
+/* reduce motion */
+@media (prefers-reduced-motion: reduce){ *{ animation:none !important; transition:none !important } }
 </style>
 </head>
 <body>
 
-<div class="header">
-  <img src="https://files.catbox.moe/q1r9md.jpg" alt="Logo">
-  <h1>Einar Yuroo</h1>
-  <div class="clock" id="clock">00:00</div>
-</div>
+<div class="blob"></div>
+<div class="blob b2"></div>
 
-<div class="container">
-  <h2><span class="typing">Haloo semuaa, aku Einar Yuroo!</span></h2>
+<header class="header" role="banner">
+  <div class="brand" aria-label="Brand">
+    <img src="https://files.catbox.moe/q1r9md.jpg" alt="Logo">
+    <h1>Einar Yuroo</h1>
+    <div class="clock" id="clock" aria-live="polite">00:00</div>
+  </div>
+</header>
+
+<main class="container" role="main">
+  <h2 class="title"><span class="typing">Haloo semuaa, aku Einar Yuroo!</span></h2>
   <p class="intro">Aku menyediakan layanan jual beli akun game atau sosial media, serta berbagai jasa tambahan yang bisa membantu kebutuhanmu. Yuk lihat layanan yang tersedia di bawah 👇</p>
 
-  <button onclick="togglePopup('rekber')">Fee Rekber EinarYuroo 💸</button>
-  <div id="popup-rekber" class="popup">
+  <button onclick="togglePopup('rekber', event)">Fee Rekber EinarYuroo 💸</button>
+  <div id="popup-rekber" class="popup" aria-hidden="true">
     <img src="https://files.catbox.moe/rpey8o.jpg" alt="Fee Rekber" onclick="openImage(this)">
   </div>
 
-  <button onclick="togglePopup('payment')">Yuroo’s Payment 💳</button>
-  <div id="popup-payment" class="popup">
-    <button onclick="toggleSub('dana')">DANA</button>
-    <div id="sub-dana" class="popup">
+  <button onclick="togglePopup('payment', event)">Yuroo’s Payment 💳</button>
+  <div id="popup-payment" class="popup" aria-hidden="true">
+    <button onclick="toggleSub('dana', event)">DANA</button>
+    <div id="sub-dana" class="popup" aria-hidden="true">
       <img class="logo-small" src="https://files.catbox.moe/4y4duk.jpg" alt="Dana" onclick="openImage(this)">
       <b>No :</b> 088226440661 <button onclick="copyText('088226440661')">Copy</button><br>
       <b>A/N :</b> Wahyu Sa****ah
     </div>
-    <button onclick="toggleSub('gopay')">GOPAY</button>
-    <div id="sub-gopay" class="popup">
+    <button onclick="toggleSub('gopay', event)">GOPAY</button>
+    <div id="sub-gopay" class="popup" aria-hidden="true">
       <img class="logo-small" src="https://files.catbox.moe/9mtros.jpg" alt="Gopay" onclick="openImage(this)">
       <b>No :</b> 088226440661 <button onclick="copyText('088226440661')">Copy</button><br>
       <b>A/N :</b> Zee
     </div>
-    <button onclick="toggleSub('qris')">QRIS All Payment</button>
-    <div id="sub-qris" class="popup">
-      <img src="https://files.catbox.moe/yr6otw.jpg" alt="QRIS" onclick="openImage(this)">
-      <button onclick="downloadImage('https://files.catbox.moe/yr6otw.jpg')">Perbesar Qris</button>
+    <button onclick="toggleSub('qris', event)">QRIS All Payment</button>
+    <div id="sub-qris" class="popup" aria-hidden="true">
+      <img src="https://files.catbox.moe/dbk6il.jpg" alt="QRIS" onclick="openImage(this)">
+      <button onclick="downloadImage('https://files.catbox.moe/dbk6il.jpg')">Perbesar Qris</button>
     </div>
   </div>
 
-  <button onclick="togglePopup('contact')">No WhatsApp✉️</button>
-  <div id="popup-contact" class="popup">
+  <button onclick="togglePopup('contact', event)">No WhatsApp✉️</button>
+  <div id="popup-contact" class="popup" aria-hidden="true">
     <button onclick="window.open('https://wa.me/+6288226440661','_blank')">WhatsApp</button>
     <button onclick="window.open('https://t.me/EinarYuroo','_blank')">Telegram</button>
   </div>
 
-  <div class="divider"></div>
+  <div class="divider" role="separator" aria-hidden="true"></div>
 
   <button onclick="window.open('https://chat.whatsapp.com/DhbfSjrBS5P4kvfnvZyjwB','_blank')">Yuroo Public Marketplace ☘️</button>
   <button onclick="window.open('https://whatsapp.com/channel/0029Vb6bra3AjPXWF86Y0Q0t','_blank')">Testimonial & Stock Channel ⭐</button>
 
-  <div class="divider"></div>
+  <div class="divider" role="separator" aria-hidden="true"></div>
 
   <button onclick="window.open('https://www.tiktok.com/@einaryuroo0?_t=ZS-90qWPpdywZr&_r=1','_blank')">TikTok 🎵</button>
   <button onclick="window.open('https://www.instagram.com/yuroo.store?igsh=MXhxcnE3NTMxOTZ0ZA==','_blank')">Instagram 📸</button>
 
-  <div class="divider"></div>
+  <div class="divider" role="separator" aria-hidden="true"></div>
 
   <ul>
     <li>Jasa pembuatan Web simple</li>
@@ -246,54 +217,101 @@ footer {
     <li>Jasa tambah, benerin, atau hapus fitur Bot WhatsApp</li>
     <li>Sewa Bot</li>
   </ul>
-</div>
+</main>
 
 <footer>© 2025 Einar Yuroo — All Rights Reserved</footer>
 
-<div class="music-player">
-  <button id="playPause">⏸️</button>
-  <audio id="music" autoplay loop></audio>
+<!-- Lightbox -->
+<div id="lightbox" aria-hidden="true"><img id="lightbox-img" alt="Preview"></div>
+
+<!-- Audio + tombol musik FAB -->
+<audio id="music" preload="auto" loop></audio>
+<div class="music-fab" id="musicFab" aria-label="Putar/Jeda musik" title="Putar/Jeda">
+  <span id="musicIcon">▶</span>
 </div>
 
 <script>
-function togglePopup(id) {
-  const el = document.getElementById("popup-" + id);
-  const all = document.querySelectorAll(".popup");
-  all.forEach(p => { if (p !== el && !p.id.startsWith("sub-")) p.style.display = "none"; });
-  el.style.display = el.style.display === "block" ? "none" : "block";
+// ripple kecil pada tombol
+function ripple(btn){ btn.classList.add('ripple-animate'); setTimeout(()=>btn.classList.remove('ripple-animate'), 450); }
+
+// popup utama & sub
+function togglePopup(id, e){
+  if(e) ripple(e.target);
+  const el=document.getElementById('popup-'+id);
+  document.querySelectorAll('.popup.show').forEach(p=>{ if(p!==el && !p.id.startsWith('sub-')){ p.classList.remove('show'); p.setAttribute('aria-hidden','true'); } });
+  const isOpen=el.classList.toggle('show'); el.setAttribute('aria-hidden', String(!isOpen));
 }
-function toggleSub(id) {
-  const sub = document.getElementById("sub-" + id);
-  const subs = document.querySelectorAll("[id^='sub-']");
-  subs.forEach(s => { if (s !== sub) s.style.display = "none"; });
-  sub.style.display = sub.style.display === "block" ? "none" : "block";
+function toggleSub(id, e){
+  if(e) ripple(e.target);
+  const sub=document.getElementById('sub-'+id);
+  document.querySelectorAll('[id^="sub-"]').forEach(s=>{ if(s!==sub){ s.classList.remove('show'); s.setAttribute('aria-hidden','true'); } });
+  const isOpen=sub.classList.toggle('show'); sub.setAttribute('aria-hidden', String(!isOpen));
 }
-function copyText(t){navigator.clipboard.writeText(t);alert("Nomor berhasil disalin: "+t);}
-function openImage(img){const w=window.open("","_blank");w.document.write(`<img src="${img.src}" style="width:100%;height:auto;">`);}
-function downloadImage(u){const a=document.createElement("a");a.href=u;a.download="QRIS-Yuroo.jpg";a.click();}
+
+// copy nomor
+function copyText(t){ navigator.clipboard.writeText(t); alert('Nomor berhasil disalin: '+t); }
+
+// lightbox gambar (QRIS tampil sempurna)
+function openImage(img){
+  const lb=document.getElementById('lightbox');
+  const lbImg=document.getElementById('lightbox-img');
+  lbImg.src=img.src;
+  lb.classList.add('show'); lb.setAttribute('aria-hidden','false');
+}
+document.getElementById('lightbox').addEventListener('click', (e)=>{
+  // klik area gelap untuk menutup
+  if(e.target.id==='lightbox'){ e.currentTarget.classList.remove('show'); e.currentTarget.setAttribute('aria-hidden','true'); }
+});
+// tutup dengan ESC
+document.addEventListener('keydown', (e)=>{
+  if(e.key==='Escape'){ const lb=document.getElementById('lightbox'); lb.classList.remove('show'); lb.setAttribute('aria-hidden','true'); }
+});
+
+// download gambar
+function downloadImage(u){ const a=document.createElement('a'); a.href=u; a.download='QRIS-Yuroo.jpg'; a.click(); }
+
+// jam
 function updateClock(){
   const now=new Date();
-  const d=["Minggu","Senin","Selasa","Rabu","Kamis","Jumat","Sabtu"][now.getDay()];
-  const m=["Jan","Feb","Mar","Apr","Mei","Jun","Jul","Agu","Sep","Okt","Nov","Des"][now.getMonth()];
-  document.getElementById("clock").innerText=`${d}, ${now.getDate()} ${m} ${now.getFullYear()} | ${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}`;
+  const d=['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'][now.getDay()];
+  const m=['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'][now.getMonth()];
+  document.getElementById('clock').innerText=`${d}, ${now.getDate()} ${m} ${now.getFullYear()} | ${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}`;
 }
-setInterval(updateClock,1000);updateClock();
+setInterval(updateClock,1000); updateClock();
 
-const musicList=[
- "https://files.catbox.moe/n4bgcp.mp3",
- "https://files.catbox.moe/jnf8ji.mp3",
- "https://files.catbox.moe/ji3ziw.mp3"
+// musik: tombol FAB jelas di kanan-bawah
+const tracks=[
+ 'https://files.catbox.moe/n4bgcp.mp3',
+ 'https://files.catbox.moe/jnf8ji.mp3',
+ 'https://files.catbox.moe/ji3ziw.mp3'
 ];
-const music=document.getElementById("music");
-music.src=musicList[Math.floor(Math.random()*musicList.length)];
-music.volume=0;music.play();
-let vol=0;
-const fadeIn=setInterval(()=>{if(vol<0.3){vol+=0.01;music.volume=vol;}else clearInterval(fadeIn);},200);
-const playBtn=document.getElementById("playPause");
-playBtn.onclick=()=>{
- if(music.paused){music.play();playBtn.textContent="⏸️";}
- else{music.pause();playBtn.textContent="▶️";}
+const music=document.getElementById('music');
+const musicFab=document.getElementById('musicFab');
+const musicIcon=document.getElementById('musicIcon');
+
+let started=false; let fading=null;
+function fadeTo(target, done){
+  if(fading) clearInterval(fading);
+  const step=(target>music.volume)?0.02:-0.02;
+  fading=setInterval(()=>{
+    let v=+(music.volume+step).toFixed(2);
+    if((step>0 && v>=target)||(step<0 && v<=target)){ music.volume=target; clearInterval(fading); fading=null; if(done) done(); }
+    else{ music.volume=Math.min(1, Math.max(0, v)); }
+  },80);
+}
+
+musicFab.onclick=async ()=>{
+  if(!started){
+    music.src=tracks[Math.floor(Math.random()*tracks.length)];
+    try{ await music.play(); started=true; fadeTo(0.3); musicIcon.textContent='❚❚'; }catch(e){ /* autoplay mungkin diblokir */ }
+    return;
+  }
+  if(music.paused){ music.play(); fadeTo(0.3); musicIcon.textContent='❚❚'; }
+  else{ fadeTo(0, ()=>music.pause()); musicIcon.textContent='▶'; }
 };
+
+// aksesibilitas: tombol via keyboard
+musicFab.addEventListener('keydown', (e)=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); musicFab.click(); } });
 </script>
 </body>
 </html>
